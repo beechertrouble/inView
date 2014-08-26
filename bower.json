@@ -1,0 +1,17 @@
+{
+	"name": "inView",
+	"version": "1.0.0",
+	"homepage": "https://github.com/beechertrouble/inView",
+	"authors": [
+		"Beecher <beechbot@gmail.com>"
+	],
+	"ignore": [
+		"node_modules",
+		"Gruntfile.js",
+		"package.json",
+		".project"
+	],
+	"main": "inView.min.js",
+	"license": "MIT",
+	"private": false
+}

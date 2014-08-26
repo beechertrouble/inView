@@ -1,17 +1,19 @@
 if(!jQuery().inView){
-	$.fn.inView=function(c){ // where c = padding above and below the element : i.e. to trigger when slightly off screen :  defaults to window height
+	$.fn.inView=function(p){ 
 		
-		var e = false,
+		var r = false,
 			a = $(window);
-		
+			
 		if(this.length > 0){
 		
-			var d = this.offset() === null ? 0 : this.offset().top,
-				b = d+this.height();
-				c = c === undefined ? a.height() : c;
+			var t = this.offset() === null ? 0 : this.offset().top, // top of the $el
+				b = t+this.height(); // bottom of the $el
 			
-			e =((a.scrollTop() + a.height()) + c) >= d && (a.scrollTop() - c) <= b ? true : false;
+			p = p === undefined ? a.height() : p; // padding for viewport, to consider things in view, default to 1 viewport height
+			
+			r = ((a.scrollTop() + a.height()) + p) >= t && (a.scrollTop() - p) <= b ? true : false;
 		}
-		return e;
+		
+		return r;
 	}
 };
