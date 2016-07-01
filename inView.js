@@ -1,17 +1,20 @@
 if(!jQuery().inView){
+	
+	var W = $(window);
+	
 	$.fn.inView=function(p){ 
 		
-		var r = false,
-			a = $(window);
+		var el = this,
+			r = false;
 			
-		if(this.length > 0){
+		if(el.length > 0 && el.is(":visible")){
 		
-			var t = this.offset() === null ? 0 : this.offset().top, // top of the $el
-				b = t+this.height(); // bottom of the $el
+			var t = el.offset() === null ? 0 : el.offset().top, // top of the $el
+				b = t+el.height(); // bottom of the $el
 			
-			p = p === undefined ? a.height() : p; // padding for viewport, to consider things in view, default to 1 viewport height
+			p = p === undefined ? W.height() : p; // padding for viewport, to consider things in view, default to 1 viewport height
 			
-			r = ((a.scrollTop() + a.height()) + p) >= t && (a.scrollTop() - p) <= b ? true : false;
+			r = ((W.scrollTop() + W.height()) + p) >= t && (W.scrollTop() - p) <= b ? true : false;
 		}
 		
 		return r;
